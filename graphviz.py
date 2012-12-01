@@ -37,7 +37,7 @@ class Graphviz:
     ## The location that the graph data is stored as images.
     _directory_images = "images/"    
     ## The location of the templates for the dot markup.
-    _directory_templates = ".templates/"
+    _directory_templates = "data/templates/"
     ## The name of the template for the dot markup.
     _template_dot = "template.dot"
     
@@ -109,7 +109,7 @@ class Graphviz:
     def __init__(self):
         path = "%s%s" % (self._directory_templates, self._template_dot)
         
-        if not os.path.exists(path):        
+        if os.path.exists(path):        
             fhandle = open(path, 'r')
             self._format_body = fhandle.read()
             fhandle.close()
