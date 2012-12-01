@@ -26,7 +26,8 @@ import codecs
 
 
 class Graphviz2:
-    m_dirWorking    = "data/gif/"
+    _directoryData      = "data/dot/"
+    _directoryImages    = "images/"
     m_template      = "template.dot"
     
     m_formatBody    = None
@@ -56,7 +57,7 @@ class Graphviz2:
         return
     
     def setup(self):
-        path = self.m_dirWorking + self.m_template
+        path = self._directoryData + self.m_template
         
         if not os.path.exists(path):
             return False
@@ -136,10 +137,10 @@ class Graphviz2:
         return
     
     def createDot(self, name):
-        if not os.path.exists(self.m_dirWorking):
-            os.mkdir(self.m_dirWorking)
+        if not os.path.exists(self._directoryData):
+            os.mkdir(self._directoryData)
         
-        fhandle = codecs.open("%s%s.dot" % (self.m_dirWorking, name), encoding='utf-8', mode='w')
+        fhandle = codecs.open("%s%s.dot" % (self._directoryData, name), encoding='utf-8', mode='w')
         
         fields = self.parseGraph()
         fields.append(self.parseRank())
@@ -158,8 +159,8 @@ class Graphviz2:
         if not itype:
             itype = "dot"
         
-        pathDot = "%s%s.dot" % (self.m_dirWorking, name)
-        pathPng = "%s%s.png" % (self.m_dirWorking, name)
+        pathDot = "%s%s.dot" % (self._directoryData, name)
+        pathPng = "%s%s.png" % (self._directoryData, name)
         
         if not os.path.exists(pathDot):
             return False

@@ -29,7 +29,7 @@ from graphviz2 import Graphviz2
 
 
 class DiGraph:
-    _directoryData  = "data/"
+    _directoryData  = "data/json/"
     _painter        = None
     
     INFINITY = 10000
