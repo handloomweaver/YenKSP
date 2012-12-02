@@ -1,0 +1,25 @@
+var NAVTREEINDEX =
+{
+"index.html":[],
+"namespaces.html":[0,0],
+"namespacealgorithms.html":[0,0,0],
+"namespacegraph.html":[0,0,1],
+"namespacegraphviz.html":[0,0,2],
+"namespaceprioritydictionary.html":[0,0,3],
+"namespace_yen_k_s_p.html":[0,0,4],
+"namespacemembers.html":[0,1,0],
+"namespacemembers_func.html":[0,1,1],
+"annotated.html":[1,0],
+"classgraph_1_1_di_graph.html":[1,0,0],
+"classgraphviz_1_1_graphviz.html":[1,0,1],
+"classprioritydictionary_1_1priority_dictionary.html":[1,0,2],
+"classes.html":[1,1],
+"functions.html":[1,2,0],
+"functions_func.html":[1,2,1],
+"functions_vars.html":[1,2,2],
+"files.html":[2,0],
+"algorithms_8py.html":[2,0,0],
+"graph_8py.html":[2,0,1],
+"graphviz_8py.html":[2,0,2],
+"prioritydictionary_8py.html":[2,0,3]
+};

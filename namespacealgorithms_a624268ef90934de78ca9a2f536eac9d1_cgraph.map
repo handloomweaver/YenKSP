@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$namespacealgorithms.html#a09b900df84c6992f3ab244de94fb29ef" title="Computes K paths from a source to a sink in the supplied graph." alt="" coords="169,32,303,61"/>
+<area shape="rect" id="node5" href="$namespacealgorithms.html#a7e9ad4d36eb9c45e4490f80810327841" title="Computes the shortest path from a source to a sink in the supplied graph." alt="" coords="352,5,480,35"/>
+<area shape="rect" id="node7" href="$namespacealgorithms.html#aba0a5c31acebf8bb5c7008b72d949465" title="Finds a paths from a source to a sink using a supplied previous node list." alt="" coords="529,32,639,61"/>
+</map>
