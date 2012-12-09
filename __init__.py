@@ -62,8 +62,19 @@ import algorithms
 # The time complexity of Yen's algorithm is dependent on the shortest path algorithm used in the computation of the spur paths, so the Dijkstra algorithm is assumed. Dijkstra's algorithm has a worse case time complexity of \f$O(N^2)\f$, but using a Fibonacci heap it becomes \f$O(M + N\log N)\f$, where \f$M\f$ is the amount of edges in the graph. Since Yen's algorithm makes \f$K\f$ calls to the Dijkstra in computing the spur paths, the time complexity becomes \f$O(KN(M + N\log N))\f$.
 #
 def main():
+    # Load the graph
     G = DiGraph("net5")
     
+    # Get the painting object and set its properties.
+    paint = G.painter()
+    paint.set_source_sink("C", "H")
+    paint.set_rank_same(['C', 'D', 'F'])
+    paint.set_rank_same(['E', 'G', 'H'])
+    
+    # Generate the graph using the painter we configured.
+    G.export(False, paint)
+    
+    # Get 30 shortest paths from the graph.
     items = algorithms.ksp_yen(G, "C", "H", 30)
     for path in items:
         print "Cost:%s\t%s" % (path['cost'], "->".join(path['path']))

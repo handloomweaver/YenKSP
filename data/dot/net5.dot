@@ -1,0 +1,50 @@
+digraph network { 
+	rankdir=TB;
+	node [shape=circle, style=filled]
+	edge [minlen=2]
+	
+	/* Nodes */
+	"C" [color=""]
+	"E" [color=""]
+	"D" [color=""]
+	"G" [color=""]
+	"F" [color=""]
+	"H" [color=""]
+	
+	
+	/* Edges */
+	"C" -> "E" [label="2"]
+	"C" -> "D" [label="3"]
+	"E" -> "D" [label="1"]
+	"E" -> "G" [label="3"]
+	"E" -> "F" [label="2"]
+	"D" -> "F" [label="4"]
+	"G" -> "H" [label="2"]
+	"F" -> "H" [label="1"]
+	"F" -> "G" [label="2"]
+	
+	
+	/* Nodes that have the same rank. */
+	{ rank=same; "C" "D" "F" }
+	{ rank=same; "E" "G" "H" }
+	
+	
+	"C" [rank="source"]
+	"H" [rank="sink"]
+	// Source Node
+	// Sink Node
+	
+	/* Legend */
+	subgraph legend {
+		rankdir=TB;
+		rank="same";
+		
+		"legend1" [shape=none, fillcolor="white", fontname="monospace", fontcolor="white", label=<
+			<TABLE BORDER="0">
+				<TR><TD>                    </TD></TR>
+				<TR><TD>                    </TD></TR>
+				<TR><TD>                    </TD></TR>
+				<TR><TD>                    </TD></TR>
+			</TABLE>>]
+	}
+}
