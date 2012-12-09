@@ -51,6 +51,8 @@ def ksp_yen(graph, node_start, node_end, max_k=2):
           'path': path(previous, node_start, node_end)}]
     B = []
     
+    if not A[0]['path']: return A
+    
     for k in range(1, max_k):
         for i in range(0, len(A[-1]['path']) - 1):
             node_spur = A[-1]['path'][i]
@@ -58,18 +60,16 @@ def ksp_yen(graph, node_start, node_end, max_k=2):
             
             edges_removed = []
             for path_k in A:
-                if path_root == path_k['path'][:i+1]:
-                    cost = graph.remove_edge(path_k['path'][i], 
-                                             path_k['path'][i+1])
+                curr_path = path_k['path']
+                if len(curr_path) > i and path_root == curr_path[:i+1]:
+                    cost = graph.remove_edge(curr_path[i], curr_path[i+1])
                     if cost == -1:
                         continue
-                    edges_removed.append([path_k['path'][i], 
-                                          path_k['path'][i+1], 
-                                          cost])
+                    edges_removed.append([curr_path[i], curr_path[i+1], cost])
             
             path_spur = dijkstra(graph, node_spur, node_end)
             
-            if path_spur:
+            if path_spur['path']:
                 path_total = path_root[:-1] + path_spur['path']
                 dist_total = distances[node_spur] + path_spur['cost']
                 potential_k = {'cost': dist_total, 'path': path_total}
@@ -135,7 +135,7 @@ def dijkstra(graph, node_start, node_end=None):
 # @param node_end The sink node of the graph.
 #
 # @retval [] Array of nodes if a path is found, an empty list if no path is 
-# found from the source tp sink.
+# found from the source to sink.
 #
 def path(previous, node_start, node_end):
     route = []
@@ -153,16 +153,3 @@ def path(previous, node_start, node_end):
     
     route.reverse()
     return route
-
-def main():
-    G = DiGraph("net5")
-    
-    items = ksp_yen(G, "C", "H", 3)
-    for path in items:
-        print path
-    
-    return 0
-
-
-if __name__ == '__main__':
-    main()
