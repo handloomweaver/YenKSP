@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['infinity',['INFINITY',['../classgraph_1_1_di_graph.html#a25e1c4271a1d308d3091f33341c35f85',1,'graph::DiGraph']]]
+  ['infinity',['INFINITY',['../class_yen_k_s_p_1_1graph_1_1_di_graph.html#ae11f6f8ae110c99f93c439fa6c793675',1,'YenKSP::graph::DiGraph']]]
 ];

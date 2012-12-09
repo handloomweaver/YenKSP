@@ -1,0 +1,53 @@
+\form#0:$A^1$
+\form#1:$A$
+\form#2:$B$
+\form#3:$A^k$
+\form#4:$k$
+\form#5:$2$
+\form#6:$K$
+\form#7:$A^{k-1}$
+\form#8:${A^k}_i$
+\form#9:$i$
+\form#10:$1$
+\form#11:${Q^k}_k$
+\form#12:${R^k}_i$
+\form#13:${S^k}_i$
+\form#14:$A^{j}$
+\form#15:$j$
+\form#16:$k-1$
+\form#17:$d_{i(i+1)}$
+\form#18:$(i)$
+\form#19:$(i + 1)$
+\form#20:${A^k}_i = {R^k}_i + {S^k}_i$
+\form#21:$(C)$
+\form#22:$(H)$
+\form#23:$(C)-(E)-(F)-(H)$
+\form#24:${R^2}_1 = (C)$
+\form#25:$(C)-(E)$
+\form#26:${S^2}_1$
+\form#27:$(C)-(D)-(F)-(H)$
+\form#28:${A^2}_1 = {R^2}_1 + {S^2}_1 = (C)-(D)-(F)-(H)$
+\form#29:$(E)$
+\form#30:${R^2}_2 = (C)-(E)$
+\form#31:$(E)-(F)$
+\form#32:${S^2}_2$
+\form#33:$(E)-(G)-(H)$
+\form#34:${A^2}_2 = {R^2}_2 + {S^2}_2 = (C)-(E)-(G)-(H)$
+\form#35:$(F)$
+\form#36:${R^2}_3 = (C)-(E)-(F)$
+\form#37:$(F)-(H)$
+\form#38:${S^2}_3$
+\form#39:$(F)-(G)-(H)$
+\form#40:${A^2}_3 = {R^2}_3 + {S^2}_3 = (C)-(E)-(F)-(G)-(H)$
+\form#41:${A^2}_2$
+\form#42:$A^2$
+\form#43:$A^3$
+\form#44:${A^2}_2 = (C)-(E)-(G)-(H)$
+\form#45:$N^2 + KN$
+\form#46:$N^2$
+\form#47:$KN$
+\form#48:$N$
+\form#49:$O(N^2)$
+\form#50:$O(M + N\log N)$
+\form#51:$M$
+\form#52:$O(KN(M + N\log N))$

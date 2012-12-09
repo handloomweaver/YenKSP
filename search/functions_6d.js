@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main',['main',['../namespacealgorithms.html#a624268ef90934de78ca9a2f536eac9d1',1,'algorithms']]]
+  ['main',['main',['../namespace_yen_k_s_p.html#ad9054559c93088a7546926b9f8d9938f',1,'YenKSP']]]
 ];

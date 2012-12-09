@@ -1,6 +1,7 @@
 var NAVTREE =
 [
   [ "Yen's K-Shortest Path Algorithm", "index.html", [
+    [ "Yen's K-Shortest Path Algorithm", "index.html", null ],
     [ "Packages", null, [
       [ "Packages", "namespaces.html", "namespaces" ],
       [ "Package Functions", "namespacemembers.html", [

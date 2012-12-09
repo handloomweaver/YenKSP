@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Yen&#39;s K-Shortest Path Algorithm: Main Page</title>
+<title>Yen&#39;s K-Shortest Path Algorithm: Yen&#39;s K-Shortest Path Algorithm</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -30,12 +30,14 @@
  <tbody>
  <tr style="height: 56px;">
   
+  <td id="projectlogo"><img alt="Logo" src="cooltext848732023.png"/></td>
+  
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Yen&#39;s K-Shortest Path Algorithm
    
    </div>
-   
+   <div id="projectbrief">Python Implementation</div>
   </td>
   
   
@@ -89,10 +91,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">Yen's K-Shortest Path Algorithm Documentation</div>  </div>
+<div class="title">Yen's K-Shortest Path Algorithm </div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<div class="textblock"><h2><a class="anchor" id="intro_sec"></a>
+Introduction</h2>
+<p>Yen's algorithm computes single-source K-shortest loopless paths for a graph with non-negative edge cost. The algorithm was published by Jin Y. Yen in 1971 and implores any shortest path algorithm to find the best path, then proceeds to find K − 1 deviations of the best path. See also, <a href="http://en.wikipedia.org/wiki/Yen%27s_algorithm">Yen's Algorithm</a>.</p>
+<h2><a class="anchor" id="install_sec"></a>
+Description</h2>
+<p>The algorithm can be broken down into two parts, determining the first k-shortest path, <img class="formulaInl" alt="$A^1$" src="form_0.png"/>, and then determining all other k-shortest paths. It is assumed that the container <img class="formulaInl" alt="$A$" src="form_1.png"/> will hold the k-shortest path, whereas the container <img class="formulaInl" alt="$B$" src="form_2.png"/>, will hold the potential k-shortest paths. To determine <img class="formulaInl" alt="$A^1$" src="form_0.png"/>, the shortest path from the source to the sink, any efficient shortest path algorithm can be used.</p>
+<p>To find the <img class="formulaInl" alt="$A^k$" src="form_3.png"/>, where <img class="formulaInl" alt="$k$" src="form_4.png"/> ranges from <img class="formulaInl" alt="$2$" src="form_5.png"/> to <img class="formulaInl" alt="$K$" src="form_6.png"/>, the algorithm assumes that all paths from <img class="formulaInl" alt="$A^1$" src="form_0.png"/> to <img class="formulaInl" alt="$A^{k-1}$" src="form_7.png"/> have previously been found. The <img class="formulaInl" alt="$k$" src="form_4.png"/> iteration can be divided into two processes, finding all the deviations <img class="formulaInl" alt="${A^k}_i$" src="form_8.png"/> and choosing a minimum length path to become <img class="formulaInl" alt="$A^k$" src="form_3.png"/>. Note that in this iteration, <img class="formulaInl" alt="$i$" src="form_9.png"/> ranges from <img class="formulaInl" alt="$1$" src="form_10.png"/> to <img class="formulaInl" alt="${Q^k}_k$" src="form_11.png"/>.</p>
+<p>The first process can be further subdivided into three operations, choosing the <img class="formulaInl" alt="${R^k}_i$" src="form_12.png"/>, finding <img class="formulaInl" alt="${S^k}_i$" src="form_13.png"/>, and then adding <img class="formulaInl" alt="${A^k}_i$" src="form_8.png"/> to the container <img class="formulaInl" alt="$B$" src="form_2.png"/>. The root path, <img class="formulaInl" alt="${R^k}_i$" src="form_12.png"/>, is chosen by finding the subpath in <img class="formulaInl" alt="$A^{k-1}$" src="form_7.png"/> that follows the first i nodes of <img class="formulaInl" alt="$A^{j}$" src="form_14.png"/>, where <img class="formulaInl" alt="$j$" src="form_15.png"/> ranges from <img class="formulaInl" alt="$1$" src="form_10.png"/> to <img class="formulaInl" alt="$k-1$" src="form_16.png"/>. Then, if a path is found, the cost of edge <img class="formulaInl" alt="$d_{i(i+1)}$" src="form_17.png"/> of <img class="formulaInl" alt="$A^{j}$" src="form_14.png"/> is set to infinity. Next, the spur path, <img class="formulaInl" alt="${S^k}_i$" src="form_13.png"/>, is found by computing the shortest path from the spur node, node <img class="formulaInl" alt="$i$" src="form_9.png"/>, to the sink. The removal of previous used edges from <img class="formulaInl" alt="$(i)$" src="form_18.png"/> to <img class="formulaInl" alt="$(i + 1)$" src="form_19.png"/> ensures that the spur path is different. <img class="formulaInl" alt="${A^k}_i = {R^k}_i + {S^k}_i$" src="form_20.png"/>, the addition of the root path and the spur path, is added to <img class="formulaInl" alt="$B$" src="form_2.png"/>. Next, the edges that were removed, i.e. had their cost set to infinity, are restored to their initial values.</p>
+<p>The second process determines a suitable path for <img class="formulaInl" alt="$A^k$" src="form_3.png"/> by finding the path in container <img class="formulaInl" alt="$B$" src="form_2.png"/> with the lowest cost. This path is removed from container be and inserted into container <img class="formulaInl" alt="$A$" src="form_1.png"/> and the algorithm continues to the next iteration. Note that if the amount of paths in container <img class="formulaInl" alt="$B$" src="form_2.png"/> equal or exceed the amount of k-shortest paths that still need to be found, then the necessary paths of container <img class="formulaInl" alt="$B$" src="form_2.png"/> is added to container <img class="formulaInl" alt="$A$" src="form_1.png"/> and the algorithm is finished.</p>
+<h2><a class="anchor" id="example_sec"></a>
+Example</h2>
+<div class="image">
+<img src="YenKSP-K3-CH.gif" alt="YenKSP-K3-CH.gif"/>
+</div>
+<p>The example uses Yen's K-Shortest Path Algorithm to compute three paths from <img class="formulaInl" alt="$(C)$" src="form_21.png"/> to <img class="formulaInl" alt="$(H)$" src="form_22.png"/>. Dijkstra's algorithm is used to calculate the best path from <img class="formulaInl" alt="$(C)$" src="form_21.png"/> to <img class="formulaInl" alt="$(H)$" src="form_22.png"/>, which is <img class="formulaInl" alt="$(C)-(E)-(F)-(H)$" src="form_23.png"/> with cost 5. This path is appended to container <img class="formulaInl" alt="$A$" src="form_1.png"/> and becomes the first k-shortest path, <img class="formulaInl" alt="$A^1$" src="form_0.png"/>.</p>
+<p>Node <img class="formulaInl" alt="$(C)$" src="form_21.png"/> of <img class="formulaInl" alt="$A^1$" src="form_0.png"/> becomes the spur node with a root path of itself, <img class="formulaInl" alt="${R^2}_1 = (C)$" src="form_24.png"/>. The edge, <img class="formulaInl" alt="$(C)-(E)$" src="form_25.png"/>, is removed because it coincides with the root path and a path in container <img class="formulaInl" alt="$A$" src="form_1.png"/>. Dijkstra's algorithm is used to compute the spur path <img class="formulaInl" alt="${S^2}_1$" src="form_26.png"/>, which is <img class="formulaInl" alt="$(C)-(D)-(F)-(H)$" src="form_27.png"/>, with a cost of 8. <img class="formulaInl" alt="${A^2}_1 = {R^2}_1 + {S^2}_1 = (C)-(D)-(F)-(H)$" src="form_28.png"/> is added to container <img class="formulaInl" alt="$B$" src="form_2.png"/> as a potential k-shortest path.</p>
+<p>Node <img class="formulaInl" alt="$(E)$" src="form_29.png"/> of <img class="formulaInl" alt="$A^1$" src="form_0.png"/> becomes the spur node with <img class="formulaInl" alt="${R^2}_2 = (C)-(E)$" src="form_30.png"/>. The edge, <img class="formulaInl" alt="$(E)-(F)$" src="form_31.png"/>, is removed because it coincides with the root path and a path in container <img class="formulaInl" alt="$A$" src="form_1.png"/>. Dijkstra's algorithm is used to compute the spur path <img class="formulaInl" alt="${S^2}_2$" src="form_32.png"/>, which is <img class="formulaInl" alt="$(E)-(G)-(H)$" src="form_33.png"/>, with a cost of 7. <img class="formulaInl" alt="${A^2}_2 = {R^2}_2 + {S^2}_2 = (C)-(E)-(G)-(H)$" src="form_34.png"/> is added to container <img class="formulaInl" alt="$B$" src="form_2.png"/> as a potential k-shortest path.</p>
+<p>Node <img class="formulaInl" alt="$(F)$" src="form_35.png"/> of <img class="formulaInl" alt="$A^1$" src="form_0.png"/> becomes the spur node with a root path, <img class="formulaInl" alt="${R^2}_3 = (C)-(E)-(F)$" src="form_36.png"/>. The edge, <img class="formulaInl" alt="$(F)-(H)$" src="form_37.png"/>, is removed because it coincides with the root path and a path in container <img class="formulaInl" alt="$A$" src="form_1.png"/>. Dijkstra's algorithm is used to compute the spur path <img class="formulaInl" alt="${S^2}_3$" src="form_38.png"/>, which is <img class="formulaInl" alt="$(F)-(G)-(H)$" src="form_39.png"/>, with a cost of 8. <img class="formulaInl" alt="${A^2}_3 = {R^2}_3 + {S^2}_3 = (C)-(E)-(F)-(G)-(H)$" src="form_40.png"/> is added to container <img class="formulaInl" alt="$B$" src="form_2.png"/> as a potential k-shortest path.</p>
+<p>Of the three paths in container B, <img class="formulaInl" alt="${A^2}_2$" src="form_41.png"/> is chosen to become <img class="formulaInl" alt="$A^2$" src="form_42.png"/> because it has the lowest cost of 7. This process is continued to the 3rd k-shortest path. However, within this 3rd iteration, note that some spur paths do not exist, and the path that is chosen to become <img class="formulaInl" alt="$A^3$" src="form_43.png"/> was found within the 2nd iteration, namely <img class="formulaInl" alt="${A^2}_2 = (C)-(E)-(G)-(H)$" src="form_44.png"/>.</p>
+<h2><a class="anchor" id="features_sec"></a>
+Features</h2>
+<h3><a class="anchor" id="sub_space"></a>
+Space complexity</h3>
+<p>To store the edges of the graph, the shortest path list <img class="formulaInl" alt="$A$" src="form_1.png"/>, and the potential shortest path list <img class="formulaInl" alt="$B$" src="form_2.png"/>, <img class="formulaInl" alt="$N^2 + KN$" src="form_45.png"/> memory addresses are required.&lt;ref name="yenksp2"&gt; At worse case, the every node in the graph has an edge to every other node in the graph, thus <img class="formulaInl" alt="$N^2$" src="form_46.png"/> addresses are needed. Only <img class="formulaInl" alt="$KN$" src="form_47.png"/> addresses are need for both list <img class="formulaInl" alt="$A$" src="form_1.png"/> and <img class="formulaInl" alt="$B$" src="form_2.png"/> because at most only <img class="formulaInl" alt="$K$" src="form_6.png"/> paths will be stored, where it is possible for each path to have <img class="formulaInl" alt="$N$" src="form_48.png"/> nodes.</p>
+<h3><a class="anchor" id="sub_time"></a>
+Time complexity</h3>
+<p>The time complexity of Yen's algorithm is dependent on the shortest path algorithm used in the computation of the spur paths, so the Dijkstra algorithm is assumed. Dijkstra's algorithm has a worse case time complexity of <img class="formulaInl" alt="$O(N^2)$" src="form_49.png"/>, but using a Fibonacci heap it becomes <img class="formulaInl" alt="$O(M + N\log N)$" src="form_50.png"/>, where <img class="formulaInl" alt="$M$" src="form_51.png"/> is the amount of edges in the graph. Since Yen's algorithm makes <img class="formulaInl" alt="$K$" src="form_6.png"/> calls to the Dijkstra in computing the spur paths, the time complexity becomes <img class="formulaInl" alt="$O(KN(M + N\log N))$" src="form_52.png"/>. </p>
+</div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -111,7 +140,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="nav-path" class="navpath">
     <ul>
 
-    <li class="footer">Generated on Sat Dec 1 2012 19:53:00 for Yen's K-Shortest Path Algorithm by
+    <li class="footer">Generated on Sun Dec 9 2012 16:25:29 for Yen's K-Shortest Path Algorithm by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>
