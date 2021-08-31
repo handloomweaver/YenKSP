@@ -71,7 +71,8 @@ def ksp_yen(graph, node_start, node_end, max_k=2):
             
             if path_spur['path']:
                 path_total = path_root[:-1] + path_spur['path']
-                dist_total = distances[node_spur] + path_spur['cost']
+                #dist_total = distances[node_spur] + path_spur['cost'] #这里前半部分不是最小距离，是偏移点前固定路径距离！
+                dist_total = distance(graph,path_root) + path_spur['cost']
                 potential_k = {'cost': dist_total, 'path': path_total}
             
                 if not (potential_k in B):
@@ -88,6 +89,19 @@ def ksp_yen(graph, node_start, node_end, max_k=2):
             break
     
     return A
+
+##compute the distance of the fixed path before offset point 
+#@param graph A digraph of class Graph.
+#@param the fixed path before offset point 
+def distance(graph, path):
+    dis = 0
+    if len(path)<2:
+        return dis
+    else:
+        node_start = path[0]
+        for i in range(len(path)-1):
+            dis+=graph[path[i]][path[i+1]]
+        return dis
 
 ## Computes the shortest path from a source to a sink in the supplied graph.
 #
